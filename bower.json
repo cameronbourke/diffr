@@ -1,0 +1,10 @@
+{
+  "name": "ngbeast-boilerplate",
+  "version": "1.0.0",
+  "directory": "./www/libs"
+  "dependencies": {
+      "normalize-css": "latest",
+      "animate.css": "latest",
+      "angular": "latest"
+  }
+}
