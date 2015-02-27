@@ -1,29 +1,36 @@
+
 // Never used Gulp?? Don't worry it's pretty easy
 // ----------------------------------------------
 
 // store your gulp plugins in variables
-var gulp = require('gulp'),
-gutil = require('gulp-util'),
-concat = require('gulp-concat'),
-sass = require('gulp-sass'),
-sourcemaps = require('gulp-sourcemaps'),
-minifyCss = require('gulp-minify-css'),
-rename = require('gulp-rename'),
+var gulp     = require('gulp'),
+gutil        = require('gulp-util'),
+sass         = require('gulp-sass'),
+minifycss    = require('gulp-minify-css'),
+uncss        = require('gulp-uncss'),
+glob         = require('glob'),
+concat       = require('gulp-concat'),
+rename       = require('gulp-rename'),
 autoprefixer = require('gulp-autoprefixer'),
-imagemin = require('gulp-imagemin'),
-uglify = require('gulp-uglify'),
-connect = require('gulp-connect');
+imagemin     = require('gulp-imagemin'),
+uglify       = require('gulp-uglify'),
+browserSync  = require('browser-sync');
 
 
 
 // we might use the paths to our css & js a bit in this file, so why not just store their paths?
 var paths = {
-  sass: ['./scss/**/*.scss'],
-  js  : ['./www/**/*.js'],
-  img : ['./www/img/*']
+  sass: ['./build/scss/**/*.scss'],
+  js  : ['./build/js/**/.js'],
+  img : ['./build/img/*'],
+  css : ['./**/*.css'],
+  html: ['./www/**/*.html']
 };
 
-// prints to the console what the error is if an error occurs
+// you might want to call your js & css something other than beast. If that's the case, just change it below.
+var appName = 'beast';
+
+// prints to the terminal what the error is if an error occurs
 function errorLog(error) {
   console.error.bind(error);
   this.emit('end');
@@ -32,7 +39,7 @@ function errorLog(error) {
 
 
 // use this task during DEVELOPMENT as it is better for debugging
-gulp.task('default', ['sass', 'webserver', 'watch']);
+gulp.task('default', ['sass', 'browser-sync', 'watch']);
 
 // use this task when the app needs to go to PRODUCTION
 gulp.task('prod', ['styles', 'scripts', 'images']);
@@ -42,38 +49,39 @@ gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
 });
 
-gulp.task('webserver', function() {
-  connect.server({
-    root: './www',
-    port: 7373,
-    livereload: true
+gulp.task('browser-sync', function() {
+  browserSync.init(["css/*.css", "js/*.js", "*.html"], {
+      server: {
+          baseDir: "./www"
+      }
   });
 });
 
 gulp.task('sass', function() {
-  gulp.src('./scss/beast.app.scss')
-  .pipe(sourcemaps.init())
-    .pipe(sass())
-    .on('error', errorLog)
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest('./www/css/'))
+  gulp.src('./build/scss/' + appName + '.app.scss')
+  .pipe(sass({ includePaths: ['scss'], errLogToConsole: true }))
   .pipe(autoprefixer({
     browsers: ['last 2 versions'],
     cascade: false
   }))
-  .pipe(gulp.dest('./www/css/'))
-  .pipe(connect.reload());
+  .pipe(gulp.dest('./www/css/'));
 });
 
 gulp.task('styles', function() {
-  gulp.src('./css/beast.app.css')
+  gulp.src(paths.css)
+  .pipe(concat(appName + '.app.css'))
+  .pipe(uncss({
+    html: ['index.html'] // glob example -- html: glob.sync('templates/**/*.html')
+  }))
+  .pipe(minifycss())
+  .on('error', errorLog)
   .pipe(rename({ extname: '.min.css' }))
   .pipe(gulp.dest('./www/css/'));
 });
 
 gulp.task('scripts', function() {
   gulp.src(paths.js)
-  .pipe(concat())
+  .pipe(concat(appName + '.app.js'))
   .pipe(uglify())
   .on('error', errorLog)
   .pipe(rename({ extname: '.min.js' }))
