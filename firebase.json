@@ -2,6 +2,6 @@
   "firebase": "diffr",
   "public": "www",
   "ignore": [
-    "firebase.json",
+    "firebase.json"
   ]
 }
