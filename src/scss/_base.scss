@@ -23,6 +23,10 @@ button {
   }
 }
 
+textarea, input {
+  outline: none;
+}
+
 ul {
   list-style: none;
   padding: 0;
