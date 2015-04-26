@@ -2,23 +2,42 @@
 
   <head>
 
-    <title>ngBeast</title>
-    <!-- normalize css -->
-    <link rel="stylesheet" href="lib/normalize-css/normalize.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="lib/animate.css/animate.min.css">
+    <!-- meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>diffr | flikr's compare</title>
     <!-- your app's css -->
-    <link rel="stylesheet" href="css/beast.app.css">
+    <link rel="stylesheet" href="assets/diffr.app.css">
+
+    <!-- apps font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic|Varela+Round' rel='stylesheet' type='text/css'>
 
     <!-- angular js -->
-    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
     <!-- your app's js -->
-    <script src="builds/js/app.js"></script>
+    <script src="assets/diffr.app.js"></script>
 
   </head>
 
-  <body ng-app="Beast" class="test">
-when
+  <body ng-app="diffr" ng-controller="AppCtrl as app">
+
+    <header class="main-header row between-xs">
+      <h2 class="logo">diff<span class="logo-accent">r</span></h2>
+      <button type="button" class="btn-clear" ng-click="app.openCompareModal()">
+        <img src='assets/icon-stacked-photos.svg' class="icon-stacked-photos"/>
+      </button>
+    </header>
+
+
+    <div ui-view></div>
+
+
+    <footer>
+
+    </footer>
+
   </body>
 
 

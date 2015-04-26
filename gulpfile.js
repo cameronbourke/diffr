@@ -1,95 +1,119 @@
-
-// Never used Gulp?? Don't worry it's pretty easy
-// ----------------------------------------------
-
 // store your gulp plugins in variables
 var gulp     = require('gulp'),
 gutil        = require('gulp-util'),
 sass         = require('gulp-sass'),
-minifycss    = require('gulp-minify-css'),
-uncss        = require('gulp-uncss'),
-glob         = require('glob'),
+minifyCss    = require('gulp-minify-css'),
 concat       = require('gulp-concat'),
-rename       = require('gulp-rename'),
 autoprefixer = require('gulp-autoprefixer'),
 imagemin     = require('gulp-imagemin'),
 uglify       = require('gulp-uglify'),
-browserSync  = require('browser-sync');
+sourceMaps   = require('gulp-sourcemaps'),
+browserSync  = require('browser-sync').create();
 
 
 
 // we might use the paths to our css & js a bit in this file, so why not just store their paths?
 var paths = {
-  sass: ['./build/scss/**/*.scss'],
-  js  : ['./build/js/**/.js'],
-  img : ['./build/img/*'],
-  css : ['./**/*.css'],
-  html: ['./www/**/*.html']
+
+  dev: {
+    sass  : ['src/scss/**/*.scss'],
+    js    : ['src/js/**/*.js'],
+    img   : ['src/img/*'],
+    tmpls : ['src/templates/*.html'],
+  },
+
+  www: {
+    js  : ['www/assets/*.js'],
+    img : ['www/assets/*'],
+    css : ['www/assets/*.css'],
+    html: ['www/**/*.html']
+  }
+
 };
 
+// we only want to include the minified vendor files that are actually used in the app.
+var vendorConfig = [
+  'src/lib/angular/angular.min.js',
+  'src/lib/angular-animate/angular-animate.min.js',
+  'src/lib/angular-ui-router/release/angular-ui-router.min.js'
+];
+
 // you might want to call your js & css something other than beast. If that's the case, just change it below.
-var appName = 'beast';
+var appName = 'diffr';
 
 // prints to the terminal what the error is if an error occurs
 function errorLog(error) {
-  console.error.bind(error);
+  util.log(util.colors.red('Error: '), error.message);
   this.emit('end');
 }
 
 
 
-// use this task during DEVELOPMENT as it is better for debugging
-gulp.task('default', ['sass', 'browser-sync', 'watch']);
-
-// use this task when the app needs to go to PRODUCTION
-gulp.task('prod', ['styles', 'scripts', 'images']);
+// this is the default task that runs when you do $ gulp
+gulp.task('default', ['vendor', 'templates', 'sass', 'js', 'images', 'browser-sync', 'watch']);
 
 // the watch task allows us to keep an eye on our files for changes
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.dev.sass, ['sass']);
+  gulp.watch(paths.dev.js, ['js']);
+  gulp.watch(paths.dev.tmpls, ['templates']);
+  gulp.watch(paths.dev.img, ['images']);
 });
 
-gulp.task('browser-sync', function() {
-  browserSync.init(["css/*.css", "js/*.js", "*.html"], {
-      server: {
-          baseDir: "./www"
-      }
+
+
+gulp.task('browser-sync', ['js', 'templates', 'images'], function() {
+  browserSync.init({
+    server: {
+      baseDir: "./www"
+    }
+  });
+
+});
+
+gulp.task('vendor', function() {
+  return vendorConfig.forEach(function(path) {
+    gulp.src(path)
+    .on('error', errorLog)
+    .pipe(gulp.dest('www/lib'));
   });
 });
 
+gulp.task('templates', function() {
+  return gulp.src(paths.dev.tmpls)
+  .on('error', errorLog)
+  .pipe(gulp.dest('www/templates'));
+});
+
 gulp.task('sass', function() {
-  gulp.src('./build/scss/' + appName + '.app.scss')
-  .pipe(sass({ includePaths: ['scss'], errLogToConsole: true }))
+  return gulp.src('src/scss/' + appName + '.app.scss')
+  .pipe(sourceMaps.init())
+  .pipe(sass({ errLogToConsole: true }))
   .pipe(autoprefixer({
-    browsers: ['last 2 versions'],
+    browsers: ['last 3 versions'],
     cascade: false
   }))
-  .pipe(gulp.dest('./www/css/'));
-});
-
-gulp.task('styles', function() {
-  gulp.src(paths.css)
-  .pipe(concat(appName + '.app.css'))
-  .pipe(uncss({
-    html: ['index.html'] // glob example -- html: glob.sync('templates/**/*.html')
-  }))
-  .pipe(minifycss())
+  // to change the gutil.env.type do $ gulp --type production
+  .pipe(gutil.env.type === 'production' ? minifyCss() : gutil.noop())
+  .pipe(sourceMaps.write())
   .on('error', errorLog)
-  .pipe(rename({ extname: '.min.css' }))
-  .pipe(gulp.dest('./www/css/'));
+  .pipe(gulp.dest('www/assets'))
+  .pipe(browserSync.reload({stream:true}));
 });
 
-gulp.task('scripts', function() {
-  gulp.src(paths.js)
+gulp.task('js', function() {
+  return gulp.src(paths.dev.js)
+  .pipe(sourceMaps.init())
   .pipe(concat(appName + '.app.js'))
-  .pipe(uglify())
   .on('error', errorLog)
-  .pipe(rename({ extname: '.min.js' }))
-  .pipe(gulp.dest('./www/js/'));
+  .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
+  .pipe(sourceMaps.write())
+  .pipe(gulp.dest('www/assets'));
 });
 
 gulp.task('images', function() {
-  gulp.src(paths.img)
-  .pipe(imagemin())
-  .pipe(gulp.dest('./www/img'));
+  return gulp.src(paths.dev.img)
+  .pipe(gutil.env.type === 'production' ? imagemin() : gutil.noop())
+  .on('error', errorLog)
+  .pipe(gulp.dest('www/assets'));
 });

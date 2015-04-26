@@ -1,0 +1,67 @@
+// Functions
+// -------------------------------
+
+
+
+// Mixins
+// -------------------------------
+
+
+
+// Extends
+// -------------------------------
+
+
+
+// Presentational
+// -------------------------------
+
+body {
+  font-weight: $font-weight-base;
+  font-size: $font-size-base;
+  font-family: $font-family-heading;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  color: $dark;
+  margin: 0;
+}
+
+h1 {
+ font-size: $font-size-xxlarge;
+}
+
+h2 {
+ font-size: $font-size-xlarge;
+}
+
+h3 {
+ font-size: $font-size-large;
+}
+
+h4 {
+ font-size: $font-size-medium;
+}
+
+h5 {
+ font-size: $font-size-base;
+}
+
+h6 {
+  font-size: $font-size-small;
+}
+
+p {
+  font-size: $font-size-small;
+  padding: 0;
+  margin: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold-text {
+  font-weight: $font-weight-bold;
+}

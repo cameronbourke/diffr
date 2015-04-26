@@ -1,0 +1,37 @@
+// Functions
+// -------------------------------
+
+
+
+// Mixins
+// -------------------------------
+
+
+
+// Presentational
+// -------------------------------
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+  border: none;
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}

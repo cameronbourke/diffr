@@ -1,0 +1,35 @@
+// Functions
+// -------------------------------
+
+
+
+// Mixins
+// -------------------------------
+
+
+
+// Extends
+// -------------------------------
+
+
+
+// Presentational
+// -------------------------------
+
+.logo {
+  color: $rich;
+  display: inline-block;
+}
+
+.logo-accent {
+  color: $punch;
+}
+
+.icon-stacked-photos {
+  transform: rotate(180deg);
+  width: 40px;
+}
+
+.svg-view-photos {
+  fill: $rich;
+}
