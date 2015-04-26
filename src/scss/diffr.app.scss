@@ -1,26 +1,30 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @import
 
 // Config
-"config",
+'config',
 
 // Base
 'normalize',
-"base",
-"type",
+'base',
+'type',
 
 // Components
-"progress",
-"icon",
+'progress',
+'icon',
+'ionicons',
 
 // Elements
-"button",
-"form",
-"header",
-"inputs",
+'button',
+'form',
+'header',
+'inputs',
 
 // Util
-"animations",
-"grid",
-"util";
+'animations',
+'grid',
+'util',
+
+// Layouts
+'layout/search';

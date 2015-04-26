@@ -16,8 +16,20 @@
 .main-header {
   background: $subtle;
   padding: 15px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .sub-header {
-  height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 70px;
+  width: 33%;
+  display: flex;
+}
+
+.has-subheader {
+  position: relative;
+  top: 131px;
 }

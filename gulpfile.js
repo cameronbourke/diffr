@@ -35,6 +35,7 @@ var paths = {
 var vendorConfig = [
   'src/lib/angular/angular.min.js',
   'src/lib/angular-animate/angular-animate.min.js',
+  'src/lib/angular-resource/angular-resource.min.js',
   'src/lib/angular-ui-router/release/angular-ui-router.min.js'
 ];
 

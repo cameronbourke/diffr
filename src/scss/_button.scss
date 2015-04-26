@@ -15,4 +15,20 @@
 
 .btn-clear {
   background: none;
+  font-weight: $font-weight-light;
+}
+
+.btn-block {
+  padding: 20px;
+  transition: 0.33s ease-out;
+  color: $light;
+  text-align: center;
+  font-weight: $font-weight-light;
+}
+
+.btn-block-rich {
+  background: $rich;
+  &:hover, &:focus {
+    background: darken($rich, 15);
+  }
 }
