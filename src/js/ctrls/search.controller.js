@@ -57,7 +57,9 @@
     }
 
     function updatePhotos(newValue) {
-      getSearchedPhotos(newValue, 20);
+      if(newValue !== '') {
+        getSearchedPhotos(newValue, 20);
+      }
     }
 
     function toggleRecents() {
