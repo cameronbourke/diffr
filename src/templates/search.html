@@ -3,7 +3,7 @@
   <div class='section-search-photos'>
 
     <div class='sub-header'>
-      <input type='search' ng-model='search.searchPhotos' placeholder='Search photos to compare' />
+      <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare' />
       <button type="button" class="btn-block btn-block-rich">
         Recents <i class="icon ion-chevron-down"></i>
         </button>
@@ -11,7 +11,9 @@
 
     <div class="photo-stream">
       <ul>
-        <li ng-repeat='photo in search.filteredPhotos'></li>
+        <li ng-repeat='photo in search.searchedPhotosList'>
+          <img ng-src="https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg" />
+        </li>
       </ul>
     </div>
 
