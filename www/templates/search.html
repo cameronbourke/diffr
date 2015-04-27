@@ -17,7 +17,7 @@
 
     <div class="photo-stream">
       <p class="photo-stream-header">{{ search.searchedText }}</p>
-      <ul class="photo-list">
+      <ul class="photo-list" infinite-scroll="search.loadMorePhotos(search.searchedPhotos, 20)" infinite-scroll-distance="0.1">
         <li ng-repeat='photo in search.searchedPhotosList' class="photo-item">
           <img ng-src="https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg" />
         </li>

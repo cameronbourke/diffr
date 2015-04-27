@@ -5,7 +5,8 @@ angular.module('diffr', [
   'diffr.filters',
   'diffr.config',
   'diffr.directives',
-  'diffr.services'
+  'diffr.services',
+  'infinite-scroll'
 ]);
 
 angular.module('diffr.services', []);

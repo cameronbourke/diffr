@@ -18,10 +18,10 @@
 
 
 
-    function getSearchedPhotos(text) {
+    function getSearchedPhotos(text, amount) {
       var defer = $q.defer();
 
-      $http.get('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + flickrKey + '&text=' + text + '&format=json&nojsoncallback=1')
+      $http.get('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + flickrKey + '&text=' + text + '&per_page=' + amount + '&format=json&nojsoncallback=1')
       .success(function(data) {
         defer.resolve(data.photos.photo);
       })
