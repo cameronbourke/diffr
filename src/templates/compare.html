@@ -12,7 +12,7 @@
       <div style="background: url({{ imageUrl }})" class="compare-item-photo"></div>
       <div class="compare-details-bar">
         <a ng-href="{{ imageUrl }}" class="compare-item-url" target="_blank">{{ imageUrl }}</a>
-        <button type="text" class="btn-clear" ng-click="compare.deleteComparedPhoto()">
+        <button type="text" class="btn-clear" ng-click="compare.removeComparedPhoto(imageUrl)">
           <i class="icon ion-close-round delete-text"></i>
         </button>
       </div>

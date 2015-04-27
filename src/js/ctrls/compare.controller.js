@@ -11,6 +11,7 @@
     // variables
 
     // methods
+    compare.removeComparedPhoto = removeComparedPhoto;
 
     // initiators
     getComparedPhotosList();
@@ -21,11 +22,22 @@
       var compareUrls = LocalStorageService.getObject('comparedUrls');
       if(compareUrls[0] !== undefined) {
         compare.comparedPhotosList = compareUrls;
-        console.log(compare.comparedPhotosList);
       } else {
         compare.comparedPhotosList = [];
       }
     }
+
+    function removeComparedPhoto(url) {
+      var compareArr = LocalStorageService.getObject('comparedUrls'),
+      urlIndex       = compareArr.indexOf(url);
+      compareArr.splice(urlIndex, 1);
+      compare.comparedPhotosList = compareArr;
+      LocalStorageService.setObject('comparedUrls', compareArr);
+    }
+
+    var test = ["https://farm8.staticflickr.com/7590/17241926602_e4833c4f8c_b.jpg"];
+    test.splice(0, 1);
+    console.log(test);
 
   }
 
