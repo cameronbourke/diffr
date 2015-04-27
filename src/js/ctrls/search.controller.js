@@ -28,6 +28,7 @@
     search.toggleRecents     = toggleRecents;
     search.loadMorePhotos    = loadMorePhotos;
     search.addPhotoToCompare = addPhotoToCompare;
+    search.showCompareButton = showCompareButton;
 
     // initiators
     getSearchedPhotos('selfie', 20);
@@ -90,6 +91,16 @@
       } else {
         newArray = [];
       }
+    }
+
+    function showCompareButton(photo) {
+      var url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
+      if(newArray.indexOf(url) === -1) {
+        return true;
+      } else {
+        return false;
+      }
+
     }
 
   }

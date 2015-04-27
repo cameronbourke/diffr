@@ -19,7 +19,8 @@
 // -------------------------------
 
 .photo-item {
-  display: inline-block;
+  background: url(bg-search-photos.svg) no-repeat center center;
+  background-size: 100%;
 }
 
 .photo-item-inner {

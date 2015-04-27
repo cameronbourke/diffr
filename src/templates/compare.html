@@ -11,7 +11,7 @@
     <li ng-repeat="imageUrl in compare.comparedPhotosList" class="compare-item">
       <div style="background: url({{ imageUrl }})" class="compare-item-photo"></div>
       <div class="compare-details-bar">
-        <a ng-href="imageUrl" class="compare-item-url">{{ imageUrl }}</a>
+        <a ng-href="{{ imageUrl }}" class="compare-item-url" target="_blank">{{ imageUrl }}</a>
         <button type="text" class="btn-clear" ng-click="compare.deleteComparedPhoto()">
           <i class="icon ion-close-round delete-text"></i>
         </button>

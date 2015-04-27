@@ -30,7 +30,7 @@
 
       <li ng-repeat='photo in search.searchedPhotosList' class="photo-item">
         <div class="photo-item-inner" style="background-image: url(https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg)">
-          <div class="photo-details-bar">
+          <div class="photo-details-bar" ng-if="search.showCompareButton(photo)">
             <button type="button" class="btn-quater" ng-click="search.addPhotoToCompare(photo)">
               <img src="../assets/icon-add-photos.svg" class="icon-add-photos"/>
             </button>
