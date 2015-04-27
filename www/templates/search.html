@@ -2,6 +2,7 @@
 
     <div class='sub-header'>
       <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare' ng-model-options="search.modelOptions" ng-change="search.updatePhotos(search.searchedPhotos)" />
+      <i class="icon ion-close-round delete-text" ng-if="search.searchedPhotos" ng-click="search.searchedPhotos = ''"></i>
       <div>
         <button type="button" class="btn-block btn-block-rich" ng-click="search.toggleRecents()">
           Recents <i class="icon" ng-class="{ 'ion-chevron-up' : search.showRecentsDropdown, 'ion-chevron-down' : !search.showRecentsDropdown  }"></i>
