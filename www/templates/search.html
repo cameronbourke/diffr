@@ -17,7 +17,7 @@
         Recents <i class="icon" ng-class="{ 'ion-chevron-up' : search.showRecentsDropdown, 'ion-chevron-down' : !search.showRecentsDropdown  }"></i>
       </button>
       <ul ng-if="search.showRecentsDropdown" class="recent-list">
-        <li ng-repeat="recent in search.recentSearches" ng-click="search.updatePhotos(recent)" class="recent-item">
+        <li ng-repeat="recent in search.recentSearches | limitTo: 7" ng-click="search.updatePhotos(recent)" class="recent-item">
           {{ recent }}
         </li>
       </ul>

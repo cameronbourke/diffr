@@ -54,12 +54,16 @@
 
 .compare-item-photo {
   $compare-photo-radius: 20px;
-  height: 600px;
+  height: 450px;
+  @media screen and (min-width: 1300px) {
+    height: 600px;
+  }
   width: 100%;
   @extend %inline-bg;
   border-top-right-radius: $compare-photo-radius;
   border-top-left-radius: $compare-photo-radius;
 }
+
 .compare-item-url {
   line-height: 33px;
 }
