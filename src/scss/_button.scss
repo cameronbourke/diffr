@@ -32,3 +32,12 @@
     background: darken($rich, 15);
   }
 }
+
+.btn-quater {
+  background: rgba($light, 0.33);
+  border-top-right-radius: 100%;
+  transition: 0.33s ease-out;
+  &:focus, &:hover {
+    background: $rich;
+  }
+}

@@ -13,14 +13,10 @@
 // Presentational
 // -------------------------------
 
-.photo-list {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.recent-list {
-  margin: 0;
-  width: 120px;
+.photo-details-bar {
+  width: 100%;
+  .btn-quater {
+    height: 75px;
+    width: 75px;
+  }
 }
