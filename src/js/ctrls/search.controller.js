@@ -64,6 +64,7 @@
       console.log(newValue);
       if(newValue !== '') {
         getSearchedPhotos(newValue, 20);
+        search.showRecentsDropdown = false;
       }
     }
 
