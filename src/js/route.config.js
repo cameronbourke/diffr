@@ -20,6 +20,13 @@
     templateUrl: "templates/search.html",
     controller: "SearchCtrl",
     controllerAs: "search",
+  })
+
+  .state('compare', {
+    url: "/compare",
+    templateUrl: "templates/compare.html",
+    controller: "CompareCtrl",
+    controllerAs: "compare",
   });
 
   // if none of the above states are matched, use this as the fallback

@@ -1,0 +1,22 @@
+<header class="main-header row between-xs">
+  <h2 class="logo">diff<span class="logo-accent">r</span></h2>
+  <a type="button" class="btn-clear btn-nav btn-clear-rich" ui-sref="search">
+    Close
+  </a>
+</header>
+
+<section class='view-compare has-header'>
+
+  <ul class="compare-list">
+    <li ng-repeat="imageUrl in compare.comparedPhotosList" class="compare-item">
+      <div style="background: url({{ imageUrl }})" class="compare-item-photo"></div>
+      <div class="compare-details-bar">
+        <a ng-href="imageUrl" class="compare-item-url">{{ imageUrl }}</a>
+        <button type="text" class="btn-clear" ng-click="compare.deleteComparedPhoto()">
+          <i class="icon ion-close-round delete-text"></i>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+</section>

@@ -19,6 +19,7 @@
     search.recentSearches      = StorageService.getArray('recentSearches') || [];
     search.showRecentsDropdown = false;
     var initialLoad            = true;
+    var newArray;
     search.searchedText        = 'selfie';
 
     // methods
@@ -26,9 +27,11 @@
     search.updatePhotos      = updatePhotos;
     search.toggleRecents     = toggleRecents;
     search.loadMorePhotos    = loadMorePhotos;
+    search.addPhotoToCompare = addPhotoToCompare;
 
     // initiators
     getSearchedPhotos('selfie', 20);
+    getComparedPhotosList();
 
 
 
@@ -57,6 +60,7 @@
     }
 
     function updatePhotos(newValue) {
+      console.log(newValue);
       if(newValue !== '') {
         getSearchedPhotos(newValue, 20);
       }
@@ -64,6 +68,28 @@
 
     function toggleRecents() {
       search.showRecentsDropdown = !search.showRecentsDropdown;
+    }
+
+    function addPhotoToCompare(photo) {
+      var url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_b.jpg';
+      if(newArray.indexOf(url) === -1) {
+        console.log(newArray);
+        newArray.push(url);
+        console.log(newArray);
+        LocalStorageService.setObject('comparedUrls', newArray);
+      } else {
+        console.log('already in comparison list');
+      }
+    }
+
+    function getComparedPhotosList() {
+      var compareUrls = LocalStorageService.getObject('comparedUrls');
+      console.log(compareUrls[0] !== undefined);
+      if(compareUrls[0] !== undefined) {
+        newArray = compareUrls;
+      } else {
+        newArray = [];
+      }
     }
 
   }

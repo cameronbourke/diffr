@@ -22,10 +22,15 @@
   z-index: 100;
 }
 
+.has-header {
+  position: relative;
+  top: 52px;
+}
+
 .sub-header {
   position: fixed;
   width: 100%;
-  top: 70px;
+  top: 68px;
   display: flex;
   max-width: 960px;
 }

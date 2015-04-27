@@ -18,6 +18,13 @@
   font-weight: $font-weight-light;
 }
 
+.btn-clear-rich {
+  color: $rich;
+  &:hover, &:focus {
+    color: darken($rich, 15);
+  }
+}
+
 .btn-block {
   padding: 20px;
   transition: 0.33s ease-out;
@@ -40,4 +47,10 @@
   &:focus, &:hover {
     background: $rich;
   }
+}
+
+.btn-nav {
+  line-height: 38px;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-base;
 }

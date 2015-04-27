@@ -17,7 +17,13 @@
   margin: 0 auto;
   .btn-block {
     width: 120px;
-    height: 57px;
+    height: 58px;
+  }
+  .delete-text {
+    position: absolute;
+    top: 15px;
+    right: 150px;
+    padding: 0;
   }
   width: 100%;
   max-width: 960px;
@@ -27,4 +33,10 @@
   @media screen and (max-width: 960px) {
     padding: 0 20px;
   }
+}
+
+.view-compare {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
 }

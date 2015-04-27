@@ -1,34 +1,44 @@
+<header class="main-header row between-xs">
+  <h2 class="logo">diff<span class="logo-accent">r</span></h2>
+  <a type="button" class="btn-clear" ui-sref="compare">
+    <img src='assets/icon-stacked-photos.svg' class="icon-stacked-photos"/>
+  </a>
+</header>
+
 <section class='view-search has-subheader'>
 
-    <div class='sub-header'>
-      <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare' ng-model-options="search.modelOptions" ng-change="search.updatePhotos(search.searchedPhotos)" />
-      <i class="icon ion-close-round delete-text" ng-if="search.searchedPhotos" ng-click="search.searchedPhotos = ''"></i>
-      <div>
-        <button type="button" class="btn-block btn-block-rich" ng-click="search.toggleRecents()" ng-blur="search.showRecentsDropdown = false">
-          Recents <i class="icon" ng-class="{ 'ion-chevron-up' : search.showRecentsDropdown, 'ion-chevron-down' : !search.showRecentsDropdown  }"></i>
-        </button>
-        <ul ng-if="search.showRecentsDropdown" class="recent-list">
-          <li ng-repeat="recent in search.recentSearches" ng-click="search.updatePhotos(recent)" class="recent-item">
-            {{ recent }}
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="photo-stream">
-      <p class="photo-stream-header">{{ search.searchedText }}</p>
-      <ul class="photo-list" infinite-scroll="search.loadMorePhotos(search.searchedPhotos, 20)" infinite-scroll-distance="0.1">
-
-        <li ng-repeat='photo in search.searchedPhotosList' class="photo-item">
-          <div class="photo-item-inner" style="background-image: url(https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg)">
-            <div class="photo-details-bar">
-              <button type="button" class="btn-quater">
-                <img src="../assets/icon-add-photos.svg" class="icon-add-photos"/>
-              </button>
-          </div>
+  <div class='sub-header'>
+    <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare' ng-model-options="search.modelOptions" ng-change="search.updatePhotos(search.searchedPhotos)" />
+    <button type="button" class="btn-clear delete-text">
+      <i class="icon ion-close-round" ng-if="search.searchedPhotos" ng-click="search.searchedPhotos = ''"></i>
+    </button>
+    <div>
+      <button type="button" class="btn-block btn-block-rich" ng-click="search.toggleRecents()">
+        Recents <i class="icon" ng-class="{ 'ion-chevron-up' : search.showRecentsDropdown, 'ion-chevron-down' : !search.showRecentsDropdown  }"></i>
+      </button>
+      <ul ng-if="search.showRecentsDropdown" class="recent-list">
+        <li ng-repeat="recent in search.recentSearches" ng-click="search.updatePhotos(recent)" class="recent-item">
+          {{ recent }}
         </li>
-
       </ul>
     </div>
+  </div>
+
+  <div class="photo-stream">
+    <p class="photo-stream-header">{{ search.searchedText }}</p>
+    <ul class="photo-list" infinite-scroll="search.loadMorePhotos(search.searchedPhotos, 20)" infinite-scroll-distance="0.1">
+
+      <li ng-repeat='photo in search.searchedPhotosList' class="photo-item">
+        <div class="photo-item-inner" style="background-image: url(https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg)">
+          <div class="photo-details-bar">
+            <button type="button" class="btn-quater" ng-click="search.addPhotoToCompare(photo)">
+              <img src="../assets/icon-add-photos.svg" class="icon-add-photos"/>
+            </button>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
 
 </section>

@@ -43,9 +43,10 @@
 }
 
 .delete-text {
-  position: absolute;
-  top: 15px;
-  right: 150px;
   font-size: 1.5em;
-  color: $rich;
+  transition: 0.17s ease-out;
+  color: $danger;
+  &:hover, &focus {
+    color: darken($danger, 15);
+  }
 }
