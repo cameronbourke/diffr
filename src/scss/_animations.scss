@@ -1,0 +1,23 @@
+@import 'animate';
+
+$modal-duration:        0.66s;
+
+// [ui-view] {
+//   transition: all $modal-duration ease-in;
+//   &.ng-enter {
+//     .view-compare {
+//       animation: $modal-duration slideInLeft;
+//     }
+//     // .view-search {
+//     //   animation: $modal-duration slideOutLeft;
+//     // }
+//   }
+//   &.ng-leave {
+//   //   .view-compare {
+//   //     animation: $modal-duration slideOutLeft;
+//   //   }
+//   //   .view-search {
+//   //     animation: $modal-duration slideInLeft;
+//   //   }
+//   // }
+// }

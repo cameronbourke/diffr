@@ -28,6 +28,8 @@
     <p class="photo-stream-header">{{ search.searchedText }}</p>
     <ul class="photo-list" infinite-scroll="search.loadMorePhotos(search.searchedPhotos, 20)" infinite-scroll-distance="0.1">
 
+      <h2 ng-if="search.loading">Loading...</h2>
+
       <li ng-repeat='photo in search.searchedPhotosList' class="photo-item">
         <div class="photo-item-inner" style="background-image: url(https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg)">
           <div class="photo-details-bar" ng-if="search.showCompareButton(photo)">

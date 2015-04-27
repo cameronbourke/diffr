@@ -21,6 +21,7 @@
     var initialLoad            = true;
     var newArray;
     search.searchedText        = 'selfie';
+    search.loading             = true;
 
     // methods
     search.getSearchedPhotos = getSearchedPhotos;
@@ -44,6 +45,7 @@
       initialLoad = false;
       search.searchedPhotosList = [];
       FlickrService.getSearchedPhotos(text, amount).then(function(photos) {
+        search.loading = false;
         search.searchedPhotosList = photos;
         if(search.recentSearches.indexOf(text) === -1) {
           search.recentSearches.push(text);
