@@ -35,10 +35,6 @@
       LocalStorageService.setObject('comparedUrls', compareArr);
     }
 
-    var test = ["https://farm8.staticflickr.com/7590/17241926602_e4833c4f8c_b.jpg"];
-    test.splice(0, 1);
-    console.log(test);
-
   }
 
 })();

@@ -1,4 +1,4 @@
-@import 'animate';
+@import 'animate-css';
 
 $modal-duration:        0.66s;
 
@@ -21,3 +21,8 @@ $modal-duration:        0.66s;
 //   //   }
 //   // }
 // }
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}

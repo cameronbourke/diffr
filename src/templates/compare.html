@@ -8,6 +8,14 @@
 <section class='view-compare has-header'>
 
   <ul class="compare-list">
+
+    <div ng-if="!compare.comparedPhotosList[0]">
+      <h2 class="message-compare">
+        You haven't got anything to <a class='btn-clear-rich' ui-sref='search'>compare</a> yet!
+      </h2>
+      <img src="../assets/icon-add-photos.svg" class="icon-compare" />
+    </div>
+
     <li ng-repeat="imageUrl in compare.comparedPhotosList" class="compare-item">
       <div style="background: url({{ imageUrl }})" class="compare-item-photo"></div>
       <div class="compare-details-bar">
@@ -17,6 +25,7 @@
         </button>
       </div>
     </li>
+
   </ul>
 
 </section>

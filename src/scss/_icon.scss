@@ -50,3 +50,17 @@
     color: darken($danger, 15);
   }
 }
+
+.icon-loading {
+  animation: spin 1.75s linear infinite;
+  position: relative;
+  left: 5px;
+  top: 3px;
+}
+
+.icon-compare {
+  width: 200px;
+  transform: rotate(180deg);
+  margin: 0 auto;
+  display: block;
+}
