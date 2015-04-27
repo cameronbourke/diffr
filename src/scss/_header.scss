@@ -36,6 +36,10 @@
 }
 
 .photo-stream-header {
-  margin: 15px 20px;
-  font-size: $font-size-base;
+  margin: 30px 0 15px;
+  font-size: $font-size-medium;
+  text-transform: uppercase;
+  padding: 0 0 5px 0;
+  border-bottom: 3px solid $dark;
+  text-align: right;
 }

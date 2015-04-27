@@ -3,12 +3,17 @@
   <div class='section-search-photos'>
 
     <div class='sub-header'>
-      <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare'
-                           ng-model-options="search.modelOptions"
-                           ng-change="search.updatePhotos(search.searchedPhotos)" />
-      <button type="button" class="btn-block btn-block-rich">
-        Recents <i class="icon ion-chevron-down"></i>
-      </button>
+      <input type='search' ng-model='search.searchedPhotos' placeholder='Search photos to compare' ng-model-options="search.modelOptions" ng-change="search.updatePhotos(search.searchedPhotos)" />
+      <div>
+        <button type="button" class="btn-block btn-block-rich" ng-click="search.toggleRecents()">
+          Recents <i class="icon" ng-class="{ 'ion-chevron-up' : search.showRecentsDropdown, 'ion-chevron-down' : !search.showRecentsDropdown  }"></i>
+        </button>
+        <ul ng-if="search.showRecentsDropdown" class="recent-list">
+          <li ng-repeat="recent in search.recentSearches" ng-click="search.updatePhotos(recent)" class="recent-item">
+            {{ recent }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="photo-stream">
