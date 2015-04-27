@@ -26,8 +26,8 @@
   position: fixed;
   width: 100%;
   top: 70px;
-  width: 33%;
   display: flex;
+  max-width: 960px;
 }
 
 .has-subheader {

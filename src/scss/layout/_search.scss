@@ -14,11 +14,11 @@
 // -------------------------------
 
 .view-search {
+  margin: 0 auto;
   .btn-block {
-    min-width: 120px;
+    width: 120px;
     height: 61px;
   }
-  .photo-stream {
-    width: 33%;
-  }
+  width: 100%;
+  max-width: 960px;
 }
