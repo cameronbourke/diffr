@@ -19,6 +19,7 @@
         'blur': 0
       }
     };
+    search.recentSearches      = [];
     search.showRecentsDropdown = false;
     search.searchedText        = 'selfie';
     var initialLoad            = true;
