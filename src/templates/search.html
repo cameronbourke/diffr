@@ -34,7 +34,7 @@
         <div class='photo-item-inner' style='background-image: url(https://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_n.jpg)'>
           <div class='photo-details-bar fade' ng-if='search.showCompareButton(photo)'>
             <button type='button' class='btn-quater' ng-click='search.addPhotoToCompare(photo)'>
-              <img src='../assets/icon-add-photos.svg' class='icon-add-photos'/>
+              <icon-add-compare class='icon-add-photos'></icon-add-compare>
             </button>
           </div>
         </div>

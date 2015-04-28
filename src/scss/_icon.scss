@@ -33,13 +33,14 @@
 .icon-add-photos {
   width: 50px;
   position: relative;
-  top: 9px;
+  top: 4px;
   right: 4px;
   transform: rotate(180deg);
 }
 
-.svg-view-photos {
-  fill: $rich;
+.svg-compare-icons {
+  fill: $light;
+  stroke: $rich;
 }
 
 .delete-text {
@@ -58,10 +59,12 @@
   top: 3px;
 }
 
-.icon-compare {
+.icon-compare svg {
   width: 200px;
   transform: rotate(180deg);
   margin: 0 auto;
   display: block;
-  opacity: 0.5;
+  .svg-compare-icons {
+    stroke: darken($subtle, 40);
+  }
 }

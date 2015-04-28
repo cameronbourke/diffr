@@ -15,10 +15,10 @@
       <h2 class="message-compare">
         You haven't got anything to <a class='btn-clear-rich' ui-sref='search'>compare</a> yet!
       </h2>
-      <img src="../assets/icon-add-photos.svg" class="icon-compare" />
+      <icon-add-compare class='icon-compare'></icon-add-compare>
     </div>
 
-    <li ng-repeat="imageUrl in compare.comparedPhotosList" class="compare-item">
+    <li ng-repeat="imageUrl in compare.comparedPhotosList" class="compare-item zoom">
       <div style="background: #f8f8f8 url({{ imageUrl }}) no-repeat center center" class="compare-item-photo"></div>
       <div class="compare-details-bar">
         <a ng-href="{{ imageUrl }}" class="compare-item-url" target="_blank">{{ imageUrl }}</a>
