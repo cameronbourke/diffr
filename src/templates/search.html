@@ -4,7 +4,7 @@
   <a type='button' class='btn-clear' ng-class='{ "pulse" : search.hasComparedPhotos() }' ui-sref='compare'>
     <img src='assets/icon-stacked-photos.svg' class='icon-stacked-photos'/>
   </a>
-  
+
 </header>
 
 <section class='view-search has-subheader'>
@@ -29,7 +29,7 @@
   <div class='photo-stream'>
     <p class='photo-stream-header'>{{ search.searchedText }}</p>
 
-    <ul class='photo-list' infinite-scroll='search.loadMorePhotos(search.searchedPhotos, 20)' infinite-scroll-distance='0.1'>
+    <ul class='photo-list' infinite-scroll='search.loadMorePhotos(search.searchedPhotos, 20)' infinite-scroll-distance='0.33'>
 
       <h2 ng-if='!search.searchedPhotosList[0]' class='message-loading'>Loading <i class='icon ion-load-d icon-loading'></i></h2>
 
@@ -44,6 +44,8 @@
       </li>
 
     </ul>
+
+
   </div>
 
 </section>
