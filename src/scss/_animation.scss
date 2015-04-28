@@ -59,6 +59,14 @@
   animation: pulse 1s infinite;
 }
 
+.zoom {
+  $slide-duration: 0.5s;
+  transition: all $slide-duration ease-out;
+  &.ng-leave {
+    animation: zoomOut $slide-duration;
+  }
+}
+
 
 
 // Keyframes

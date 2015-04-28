@@ -35,6 +35,8 @@
     getSearchedPhotos('selfie', 20);
     getComparedPhotosList();
 
+    search.suggestedTags = ["john", "bill", "charlie", "robert", "alban", "oscar", "marie", "celine", "brad", "drew", "rebecca", "michel", "francis", "jean", "paul", "pierre", "nicolas", "alfred", "gerard", "louis", "albert", "edouard", "benoit", "guillaume", "nicolas", "joseph"];
+
 
 
     function getSearchedPhotos(text, amount) {
