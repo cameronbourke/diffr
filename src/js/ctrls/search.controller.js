@@ -90,9 +90,8 @@
     }
 
     function getComparedPhotosList() {
-      var compareUrls = LocalStorageService.getObject('comparedUrls');
-      if(compareUrls[0] !== undefined) {
-        newArray = compareUrls;
+      if(LocalStorageService.isArrayDefined('comparedUrls')) {
+        newArray = LocalStorageService.getObject('comparedUrls');
       } else {
         newArray = [];
       }
@@ -110,7 +109,7 @@
 
     function hasComparedPhotos() {
       // only pulse the compare photos nav button if there are photos saved
-      if(typeof LocalStorageService.getObject('comparedUrls')[0] !== 'undefined') {
+      if(LocalStorageService.isArrayDefined('comparedUrls')) {
         return true;
       } else {
         return false;
