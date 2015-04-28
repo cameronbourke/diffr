@@ -1,8 +1,7 @@
 @import 'animate-css';
 
-$modal-duration:        0.66s;
-
 // [ui-view] {
+//   $modal-duration: 0.66s;
 //   transition: all $modal-duration ease-in;
 //   &.ng-enter {
 //     .view-compare {
@@ -21,6 +20,49 @@ $modal-duration:        0.66s;
 //   //   }
 //   // }
 // }
+
+.slide {
+  $slide-duration: 0.33s;
+  transition: all $slide-duration ease-in;
+  &.ng-enter {
+    transform: translateX(30px);
+  }
+  &.ng-enter-active {
+    transform: translateX(0);
+  }
+  &.ng-leave {
+    transform: translateX(0);
+  }
+  &.ng-leave-active {
+    transform: translateX(30px);
+  }
+}
+
+.fade {
+  $slide-duration: 0.5s;
+  transition: all $slide-duration ease-out;
+  &.ng-enter {
+    opacity: 0;
+  }
+  &.ng-enter-active {
+    opacity: 1;
+  }
+  &.ng-leave {
+    opacity: 1;
+  }
+  &.ng-leave-active {
+    opacity: 0;
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+
+
+// Keyframes
+// -------------------------------
 
 @keyframes spin {
   0% { transform: rotate(0); }

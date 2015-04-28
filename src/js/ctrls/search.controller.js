@@ -29,6 +29,7 @@
     search.loadMorePhotos    = loadMorePhotos;
     search.addPhotoToCompare = addPhotoToCompare;
     search.showCompareButton = showCompareButton;
+    search.hasComparedPhotos = hasComparedPhotos;
 
     // initiators
     getSearchedPhotos('selfie', 20);
@@ -62,7 +63,7 @@
 
     function updatePhotos(newValue) {
       console.log(newValue);
-      if(newValue !== '') {
+      if(newValue !== '' || typeof newValue !== 'undefined' || !false) {
         getSearchedPhotos(newValue, 20);
         search.showRecentsDropdown = false;
       }
@@ -101,7 +102,14 @@
       } else {
         return false;
       }
+    }
 
+    function hasComparedPhotos() {
+      if(typeof LocalStorageService.getObject('comparedUrls')[0] !== 'undefined') {
+        return true;
+      } else {
+        return false;
+      }
     }
 
   }

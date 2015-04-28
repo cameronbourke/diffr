@@ -11,4 +11,3 @@ angular.module('diffr', [
 
 angular.module('diffr.services', []);
 angular.module('diffr.controllers', []);
-angular.module('diffr.filters', []);

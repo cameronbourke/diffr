@@ -30,4 +30,9 @@ input[type='search'] {
   flex-grow: 1;
   height: 100%;
   padding: 18px 20px;
+  transition: 0.33s ease-out;
+  border: 1px solid darken($subtle, 15);
+  &:focus, &:active {
+    border-bottom-color: $rich;
+  }
 }
