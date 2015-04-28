@@ -37,7 +37,7 @@
     }
 
     function isArrayDefined(key) {
-      var arr = JSON.parse($window.localStorage[key]);
+      var arr = JSON.parse($window.localStorage[key] || '{}');
       if(typeof arr[0] !== 'undefined') {
         return true;
       } else {
