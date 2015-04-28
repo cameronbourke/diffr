@@ -59,6 +59,9 @@
   top: 3px;
 }
 
+// change the inline svg to
+// a different colour on the compare view
+// so users don't think is a button
 .icon-compare svg {
   width: 200px;
   transform: rotate(180deg);

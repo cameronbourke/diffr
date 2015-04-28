@@ -19,6 +19,7 @@
 
 
     function getComparedPhotosList() {
+      // need to know whether the user has photos saved or not
       var compareUrls = LocalStorageService.getObject('comparedUrls');
       if(compareUrls[0] !== undefined) {
         compare.comparedPhotosList = compareUrls;
@@ -32,6 +33,7 @@
       urlIndex       = compareArr.indexOf(url);
       compareArr.splice(urlIndex, 1);
       compare.comparedPhotosList = compareArr;
+      // make sure to update LocalStorage after we've assigned the new array to scope
       LocalStorageService.setObject('comparedUrls', compareArr);
     }
 

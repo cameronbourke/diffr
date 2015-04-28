@@ -8,6 +8,3 @@ angular.module('diffr', [
   'diffr.services',
   'infinite-scroll'
 ]);
-
-angular.module('diffr.services', []);
-angular.module('diffr.controllers', []);

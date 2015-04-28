@@ -3,6 +3,7 @@
 
   angular.module('diffr.directives', []);
 
+  // allows us to use the benefits of inline svg, without the clutter of the markup in our html
   function iconAddCompare() {
     return {
       restrict: 'E',
@@ -10,6 +11,7 @@
       '<svg class="icon-add-photos" width="100%" height="100%" viewBox="-1 -1 31 25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">',
         "<title>Two photos stacked with an add icon in the corner</title>",
         "<desc>Lets the user add a new photo to their list of compared images</desc>",
+        // target this class to change fill, stroke colour etc in the css
         "<g class='svg-compare-icons'>",
           "<g stroke-width='1'>",
             "<path d='M0.118149935,4.50963844 L11.8374394,0.802704286 L18.1785857,17.7202619 L6.45929629,21.427196 L0.118149935,4.50963844 L0.118149935,4.50963844 Z'></path>",

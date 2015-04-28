@@ -19,6 +19,7 @@
 // -------------------------------
 
 .photo-item {
+  // bg image will show before photo-item-inner bg has loaded
   background: url(bg-search-photos.svg) no-repeat center center;
   background-size: 100%;
 }

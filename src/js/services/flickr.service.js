@@ -1,8 +1,11 @@
 (function() {
   'use strict';
 
+  angular.module('diffr.services', []);
+
   angular.module('diffr.services').service('FlickrService', FlickrService);
 
+  // need the inject method for minification
   FlickrService.$inject = ['$http', '$q'];
 
   function FlickrService($http, $q) {
@@ -19,6 +22,7 @@
 
 
     function getSearchedPhotos(text, amount) {
+      // need to use a promise becuase $http's success and error can be unreliable
       var defer = $q.defer();
 
       $http.get('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + flickrKey + '&tags=' + text + '&per_page=' + amount + '&format=json&nojsoncallback=1')

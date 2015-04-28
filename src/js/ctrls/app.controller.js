@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  angular.module('diffr.controllers', []);
+
   angular.module('diffr.controllers').controller('AppCtrl', AppCtrl);
 
   AppCtrl.$inject = ['$scope', '$rootScope'];
